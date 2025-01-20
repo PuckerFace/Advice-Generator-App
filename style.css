@@ -78,7 +78,8 @@ section {
   box-shadow: var(--neon-green) 0px 12px 70px 4px;
 }
 #advice-text {
-  width: 80%;
+  width: 90%;
+  text-align: center;
 }
 @media (max-width: 540px) {
   section {
