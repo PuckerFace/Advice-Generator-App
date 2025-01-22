@@ -2,7 +2,9 @@ const adviceBtn = document.getElementById('btn');
 const adviceText = document.getElementById('advice-text');
 const adviceID = document.getElementById('advice-id');
 
-adviceBtn.addEventListener('click', () => {
+adviceBtn.addEventListener('click', async () => {
+  adviceBtn.disabled = true;
+
   fetch('https://api.adviceslip.com/advice')
     .then((response) => {
       if (!response.ok) {
@@ -14,5 +16,8 @@ adviceBtn.addEventListener('click', () => {
       adviceText.textContent = `" ${data.slip.advice} "`;
       adviceID.textContent = `#${data.slip.id}`;
     })
-    .catch((error) => console.error(error));
+    .catch((error) => console.error(error))
+    .finally(() => {
+      adviceBtn.disabled = false;
+    });
 });
